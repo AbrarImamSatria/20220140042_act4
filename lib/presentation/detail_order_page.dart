@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:play_navigation/presentation/home_page.dart';
 
 class DetailOrderPage extends StatelessWidget {
   final String makanan;
@@ -17,6 +18,32 @@ class DetailOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(title: const Text('Detail Order Page')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Food Order: $makanan'),
+            Text('Drink Order: $minuman'),
+            Text('Food QTY Order: $jumlahMakanan'),
+            Text('Drink QTY Order: $jumlahMinuman'),
+            Text('Total Price: $totalHarga'),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomePage()),
+                  (route) => false,
+                );
+              },
+              child: const Text('Finish Order'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
